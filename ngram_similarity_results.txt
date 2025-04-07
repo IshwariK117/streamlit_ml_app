@@ -1,0 +1,507 @@
+Original Code: num = [int(input()) for i in range(10)]
+num.sort(reverse=True)
+for i in range[0:3]:
+    print(num[i])
+
+Changed Code: num = [int(input()) for i in range(10)]
+num.sort(reverse=True)
+for i in range(3):
+    print(num[i])
+
+n-gram Similarity: 0.9538461538461536
+
+Original Code: import sys
+
+input()
+for e in sys.stdin:
+    a, b, c = sorted(int(e.split()))
+    if a**2 + b**2 == c**2:
+        print("YES")
+    else:
+        print("NO")
+
+Changed Code: import sys
+
+input()
+for e in sys.stdin:
+    a, b, c = sorted(map(int, e.split()))
+    if a**2 + b**2 == c**2:
+        print("YES")
+    else:
+        print("NO")
+
+n-gram Similarity: 0.9607294599887386
+
+Original Code: while True:
+    try:
+        input_line = input()
+        if input_line == "":
+            break
+        else:
+            nums = list(map(int, input_line.split()))
+            max_num = max(nums)
+            nums.remove(max_num)
+            if max_num**2 == nums[0] ** 2 + nums[1] ** 2:
+                print("YES")
+            else:
+                print("NO")
+    except EOFError:
+        break
+
+Changed Code: n = int(input())
+for i in range(0, n):
+    nums = list(map(int, input().split()))
+    max_num = max(nums)
+    nums.remove(max_num)
+    if max_num**2 == nums[0] ** 2 + nums[1] ** 2:
+        print("YES")
+    else:
+        print("NO")
+
+n-gram Similarity: 0.8179195223102036
+
+Original Code: print(input[::-1])
+
+Changed Code: print(input()[::-1])
+
+n-gram Similarity: 0.8346223261119861
+
+Original Code: import math
+
+r = 100
+n = input()
+for i in range(n):
+    r = math.ceil(r * 1.05)
+print(r * 1000)
+
+Changed Code: import math
+
+r = 100
+n = int(input())
+for i in range(n):
+    r = math.ceil(r * 1.05)
+print(r * 1000)
+
+n-gram Similarity: 0.9723055853282454
+
+Original Code: print(*sorted(map(int, input().spilt()))[::-1])
+
+Changed Code: print(*sorted(map(int, input().split()))[::-1])
+
+n-gram Similarity: 0.9200000000000004
+
+Original Code: while True:
+    g = int(input())
+    now = 512
+    ans = []
+    while True:
+        if g == 0:
+            break
+        elif g >= now:
+            g -= now
+            ans.append(now)
+        now //= 2
+    temp = ""
+    for i in ans[::-1]:
+        temp += str(i) + " "
+    print(temp[:-1])
+
+Changed Code: import sys
+
+for line in sys.stdin:
+    g = int(line)
+    now = 512
+    ans = []
+    while True:
+        if g == 0:
+            break
+        elif g >= now:
+            g -= now
+            ans.append(now)
+        now //= 2
+    temp = ""
+    for i in ans[::-1]:
+        temp += str(i) + " "
+    print(temp[:-1])
+
+n-gram Similarity: 0.9037777762232085
+
+Original Code: result = [0] * 3
+while 1:
+    a, b, c = sorted(list(map(int, input().split())))
+    if a + b > c:
+        flag = c * c - b * b - a * a
+        if flag == 0:
+            result[0] += 1
+        elif flag > 0:
+            result[1] += 1
+        else:
+            result[2] += 1
+print(sum(result), *result)
+
+Changed Code: acute, right, obtuse = 0, 0, 0
+while True:
+    a, b, c = sorted(map(int, input().split()))
+    if a + b <= c:
+        print(acute + right + obtuse, right, acute, obtuse)
+        break
+    d = a**2 + b**2
+    e = c**2
+    if d == e:
+        right += 1
+    elif d < e:
+        obtuse += 1
+    else:
+        acute += 1
+
+n-gram Similarity: 0.3138099563770108
+
+Original Code: x = input()
+while x:
+    a, b = x.split(" ")
+    print(int(a) + int(b))
+
+Changed Code: import sys
+
+for line in sys.stdin:
+    if line == None or line == "/n":
+        break
+    a, b = line.split(" ")
+    print(int(a) + int(b))
+
+n-gram Similarity: 0.44826696386356374
+
+Original Code: import collections
+
+while True:
+    N, Q = map(int, input().split())
+    if N == 0 and Q == 0:
+        break
+    D = []
+    for _ in range(N):
+        i = list(map(int, input().split()))
+        del i[0]
+        [D.append(ii) for ii in i]
+    c = collections.Counter(D)
+    cc = c.most_common()
+    if cc[0][1] >= Q:
+        print(cc[0][0])
+    else:
+        print(0)
+
+Changed Code: import collections
+
+while True:
+    N, Q = map(int, input().split())
+    if N == 0 and Q == 0:
+        break
+    D = []
+    for _ in range(N):
+        i = list(map(int, input().split()))
+        del i[0]
+        [D.append(ii) for ii in i]
+    if not len(D) == 0:
+        c = collections.Counter(D)
+        cc = c.most_common()
+        # print(cc)
+        if cc[0][1] >= Q:
+            ans = 1000000
+            tmp = cc[0][1]
+            for i in range(len(cc)):
+                if cc[i][1] == tmp:
+                    ans = min(cc[i][0], ans)
+            print(ans)
+        else:
+            print(0)
+    else:
+        print(0)
+
+n-gram Similarity: 0.8799124271494004
+
+Original Code: from collections import Counter
+
+while True:
+    N, M = map(int, input().split())
+    if N == 0 and M == 0:
+        break
+    H = [int(input()) for _ in range(N)]
+    W = [int(input()) for _ in range(M)]
+    all_H = Counter(
+        sorted([sum(H[i:j]) for i in range(N) for j in range(i + 1, N + 1)])
+    )
+    all_W = Counter(
+        sorted([sum(W[i:j]) for i in range(M) for j in range(i + 1, M + 1)])
+    )
+    ans = 0
+    for k, v in all_H.items():
+        if k in all_H:
+            ans += v * all_W[k]
+    print(ans)
+
+Changed Code: from collections import Counter
+
+while True:
+    N, M = map(int, input().split())
+    if N == 0 and M == 0:
+        break
+    H = [int(input()) for _ in range(N)]
+    W = [int(input()) for _ in range(M)]
+
+    all_H = []
+    for i in range(N):
+        s = 0
+        for j in range(i, N):
+            s += H[j]
+            all_H.append(s)
+
+    all_W = []
+    for i in range(M):
+        s = 0
+        for j in range(i, M):
+            s += W[j]
+            all_W.append(s)
+
+    all_H = Counter(all_H)
+    all_W = Counter(all_W)
+    ans = 0
+    for k, v in all_H.items():
+        if k in all_H:
+            ans += v * all_W[k]
+    print(ans)
+
+n-gram Similarity: 0.8463233203637193
+
+Original Code: while True:
+    a = list(map(str, input().split()))
+    if a[0] == "0":
+        break
+    elif int(a[1]) <= 30:
+        print(" ".join(a))
+    elif int(a[1]) == 31 and int(a[2]) <= 4:
+        print(" ".join(a))
+    else:
+        a[0] = "?"
+        s = int(a[1])
+        s -= 30
+        a[1] = str(s)
+        print(" ".join(a))
+
+Changed Code: while True:
+    a = list(map(str, input().split()))
+    if a[0] == "#":
+        break
+    elif int(a[1]) <= 30:
+        print(" ".join(a))
+    elif int(a[1]) == 31 and int(a[2]) <= 4:
+        print(" ".join(a))
+    else:
+        a[0] = "?"
+        s = int(a[1])
+        s -= 30
+        a[1] = str(s)
+        print(" ".join(a))
+
+n-gram Similarity: 0.9949066213921913
+
+Original Code: q = int(input())
+for _ in range(q):
+    x = input()
+    y = input()
+    m = len(x)
+    n = len(y)
+    c = [0] * (n + 1)
+    for i in range(m):
+        tmp = x[i]
+        c_ = c[:]
+        for j in range(n):
+            if tmp == y[j]:
+                c[j + 1] = c_[j] + 1
+            elif c[j + 1] < c[j]:
+                c[j + 1] = c[j]
+    print(c[-1])
+
+Changed Code: def lcs(x, y):
+    a = len(x)
+    b = len(y)
+    c1 = [0] * (b + 1)
+    for i in range(a):
+        e1 = x[i]
+        c2 = c1[:]
+        for j in range(b):
+            if e1 == y[j]:
+                c1[j + 1] = c2[j] + 1
+            elif c1[j + 1] < c1[j]:
+                c1[j + 1] = c1[j]
+    return c1[-1]
+
+
+n = int(input().rstrip())
+ret = []
+for i in range(n):
+    s1 = input().rstrip()
+    s2 = input().rstrip()
+    ret.append(lcs(s1, s2))
+print(*ret, sep="\n")
+
+n-gram Similarity: 0.6924236377683634
+
+Original Code: prime = set([2])
+for i in range(3, 100000000, 2):
+    for j in prime:
+        if i % j == 0:
+            break
+    else:
+        prime.add(i)
+n = int(input())
+cnt = 0
+for i in (int(input()) for _ in range(n)):
+    if i in prime:
+        cnt += 1
+print(cnt)
+
+Changed Code: import sys
+from math import *
+
+readline = sys.stdin.readline
+
+
+def isPrime(x):
+    if x == 2 or x == 3:
+        return True
+    elif x % 2 == 0 or x % 3 == 0:
+        return False
+    s = ceil(sqrt(x))
+    for i in range(5, s + 1, 2):
+        if x % i == 0:
+            return False
+    return True
+
+
+print(sum(isPrime(int(readline())) for _ in range(int(input()))))
+
+n-gram Similarity: 0.41779223706432106
+
+Original Code: import sys
+
+values = [int(input()) for i in range(int(input()))]
+maxv = -sys.maxsize - 1
+minv = values[0]
+
+for val in enumerate(values):
+    if maxv < (val - minv):
+        maxv = val - minv
+    if minv > val:
+        minv = val
+print(maxv)
+
+Changed Code: n = int(input())
+R = [int(input()) for _ in range(n)]
+minv, maxv = R[0], R[1] - R[0]
+for j in range(1, n):
+    maxv = max(maxv, R[j] - minv)
+    minv = min(minv, R[j])
+print(maxv)
+
+n-gram Similarity: 0.595306265737263
+
+Original Code: N = int(input())
+R = [int(input()) for i in range(N)]
+
+sa = R[N - 1] - R[N - 2]
+for i in reversed(range(N)):
+    for j in reversed(range(i)):
+        tmp = R[i] - R[j]
+        if tmp > sa:
+            sa = tmp
+print(sa)
+
+Changed Code: N = int(input())
+R = [int(input()) for i in range(N)]
+
+min_v = R[0]
+max_v = R[1] - R[0]
+for i in range(1, len(R)):
+    if min_v > R[i - 1]:
+        min_v = R[i - 1]
+    if max_v < R[i] - min_v:
+        max_v = R[i] - min_v
+print(max_v)
+
+n-gram Similarity: 0.560489594221226
+
+Original Code: # -*- coding: utf-8 -*-
+
+input()
+s = set(input().split())
+input()
+t = set(input().split())
+print(int(s & t))
+
+Changed Code: # -*- coding: utf-8 -*-
+
+input()
+s = set(input().split())
+input()
+t = set(input().split())
+print(len(s & t))
+
+n-gram Similarity: 0.9789543442812516
+
+Original Code: def binarySearch(array, key):
+    left = 0
+    right = len(array)
+    while left < right:
+        mid = (left + right) / 2
+        if key == array[mid]:
+            return True
+        elif key > array[mid]:
+            left = mid + 1
+        elif key < array[mid]:
+            right = mid
+        else:
+            print("ERROR")
+    return False
+
+
+n = int(input())
+s = [int(x) for x in input().split()]
+q = int(input())
+t = [int(x) for x in input().split()]
+a = [x for x in t if binarySearch(s, x)]
+print(len(a))
+
+Changed Code: def binarySearch(array, key):
+    left = 0
+    right = len(array)
+    while left < right:
+        mid = int((left + right) / 2)
+        if key == array[mid]:
+            return True
+        elif key > array[mid]:
+            left = mid + 1
+        elif key < array[mid]:
+            right = mid
+        else:
+            print("ERROR")
+    return False
+
+
+n = int(input())
+s = [int(x) for x in input().split()]
+q = int(input())
+t = [int(x) for x in input().split()]
+a = [x for x in t if binarySearch(s, x)]
+print(len(a))
+
+n-gram Similarity: 0.9947168272124222
+
+Original Code: n = int(input())
+nd = list(map(int, input().split()))
+c = 0
+for i in range(n):
+    m = min(nd)
+    index = nd.index(m)
+    nd.remove(m)
+    c += index
+print(c)
+
